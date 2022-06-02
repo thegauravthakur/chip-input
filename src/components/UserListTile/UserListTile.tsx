@@ -1,5 +1,11 @@
 ﻿import { UserInfo } from '../../lib/users';
-import { Dispatch, MutableRefObject, RefObject, SetStateAction } from 'react';
+import {
+    Dispatch,
+    MutableRefObject,
+    RefObject,
+    SetStateAction,
+    KeyboardEvent,
+} from 'react';
 import './UserListTile.css';
 
 interface UserListTileProps {
@@ -10,6 +16,30 @@ interface UserListTileProps {
     inputValue: string;
     searchInputRef: RefObject<HTMLInputElement>;
     insertOrder: MutableRefObject<number>;
+}
+
+function focusNextElement(event: KeyboardEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    const targetElement =
+        event.currentTarget.parentElement?.nextSibling?.firstChild;
+    if (targetElement) (targetElement as HTMLFormElement).focus();
+}
+
+function focusPreviousElement(
+    event: KeyboardEvent<HTMLButtonElement>,
+    searchInputRef: RefObject<HTMLInputElement>
+) {
+    event.preventDefault();
+    const targetElement =
+        event.currentTarget.parentElement?.previousSibling?.firstChild;
+    // check if active element is the first element in the list
+    // in such case move focus to input element
+    if (
+        event.currentTarget.parentElement?.parentElement?.firstChild ===
+        document.activeElement?.parentElement
+    )
+        searchInputRef.current?.focus();
+    else if (targetElement) (targetElement as HTMLFormElement).focus();
 }
 
 function getModifiedName(name: string, searchTerm: string) {
@@ -60,6 +90,11 @@ export function UserListTile({
                 type='button'
                 onClick={onListTileClick}
                 aria-label={`select ${user.name}`}
+                onKeyDown={(event) => {
+                    if (event.key === 'ArrowDown') focusNextElement(event);
+                    if (event.key === 'ArrowUp')
+                        focusPreviousElement(event, searchInputRef);
+                }}
             >
                 <img
                     className='user-profile-picture'

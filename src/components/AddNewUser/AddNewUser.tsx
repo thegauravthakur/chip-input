@@ -5,6 +5,7 @@
     useMemo,
     useRef,
     useState,
+    KeyboardEvent,
 } from 'react';
 import { UserListTile } from '../UserListTile';
 import './AddNewUser.css';
@@ -15,6 +16,22 @@ interface AddNewUserProps {
     users: UserInfo[];
     setUsers: Dispatch<SetStateAction<UserInfo[]>>;
     searchInputRef: RefObject<HTMLInputElement>;
+}
+
+function focusFirstSuggestion(event: KeyboardEvent<HTMLInputElement>) {
+    const targetElement =
+        event.currentTarget.nextSibling?.firstChild?.firstChild;
+    if (targetElement) {
+        (targetElement as HTMLFormElement).focus();
+    }
+}
+
+function focusPreviousChip(event: KeyboardEvent<HTMLInputElement>) {
+    const targetElement =
+        event.currentTarget.parentElement?.previousElementSibling;
+    if (targetElement) {
+        (targetElement as HTMLInputElement).focus();
+    }
 }
 
 function getUsersToShow(users: UserInfo[], input: string) {
@@ -64,15 +81,16 @@ export function AddNewUser({
                 onKeyDown={(event) => {
                     if (
                         event.key === 'Backspace' &&
-                        event.currentTarget.value === ''
+                        event.currentTarget.value === '' &&
+                        users.some((user) => user.isSelected)
                     ) {
-                        const targetElement =
-                            event.currentTarget.parentElement
-                                ?.previousElementSibling;
-                        if (targetElement) {
-                            setIsInputFocused(false);
-                            (targetElement as HTMLInputElement).focus();
-                        }
+                        focusPreviousChip(event);
+                        setIsInputFocused(false);
+                    }
+
+                    if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        focusFirstSuggestion(event);
                     }
                 }}
             />
@@ -81,7 +99,7 @@ export function AddNewUser({
                     aria-label='search results'
                     className='choose-user-container'
                 >
-                    {usersToShow.map((user) => (
+                    {usersToShow.map((user, index) => (
                         <UserListTile
                             allUsers={users}
                             searchInputRef={searchInputRef}
