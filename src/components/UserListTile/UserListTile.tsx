@@ -6,6 +6,7 @@ interface UserListTileProps {
     user: UserInfo;
     allUsers: UserInfo[];
     setUsers: Dispatch<SetStateAction<UserInfo[]>>;
+    setSearchValue: Dispatch<SetStateAction<string>>;
     inputValue: string;
     searchInputRef: RefObject<HTMLInputElement>;
     insertOrder: MutableRefObject<number>;
@@ -32,6 +33,7 @@ export function UserListTile({
     inputValue,
     searchInputRef,
     insertOrder,
+    setSearchValue,
 }: UserListTileProps) {
     const modifiedName = getModifiedName(user.name, inputValue);
     function onListTileClick() {
@@ -44,7 +46,11 @@ export function UserListTile({
             insertOrder.current += 1;
             setUsers(users);
         }
-        searchInputRef.current?.focus();
+        if (searchInputRef.current) {
+            searchInputRef.current.value = '';
+            setSearchValue('');
+            searchInputRef.current.focus();
+        }
     }
 
     return (

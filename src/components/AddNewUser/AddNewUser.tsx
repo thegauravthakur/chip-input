@@ -85,6 +85,7 @@ export function AddNewUser({
                         <UserListTile
                             allUsers={users}
                             searchInputRef={searchInputRef}
+                            setSearchValue={setSearchValue}
                             setUsers={setUsers}
                             user={user}
                             inputValue={searchValue}
