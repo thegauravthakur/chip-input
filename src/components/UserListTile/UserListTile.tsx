@@ -8,7 +8,7 @@ interface UserListTileProps {
     setUsers: Dispatch<SetStateAction<UserInfo[]>>;
     inputValue: string;
     searchInputRef: RefObject<HTMLInputElement>;
-    insertedOrder: MutableRefObject<number>;
+    insertOrder: MutableRefObject<number>;
 }
 
 function getModifiedName(name: string, searchTerm: string) {
@@ -31,7 +31,7 @@ export function UserListTile({
     allUsers,
     inputValue,
     searchInputRef,
-    insertedOrder,
+    insertOrder,
 }: UserListTileProps) {
     const modifiedName = getModifiedName(user.name, inputValue);
     function onListTileClick() {
@@ -40,8 +40,8 @@ export function UserListTile({
         const selectedUser = users.find(({ email }) => email === user.email);
         if (selectedUser) {
             selectedUser.isSelected = true;
-            selectedUser.order = insertedOrder.current + 1;
-            insertedOrder.current += 1;
+            selectedUser.order = insertOrder.current + 1;
+            insertOrder.current += 1;
             setUsers(users);
         }
         searchInputRef.current?.focus();

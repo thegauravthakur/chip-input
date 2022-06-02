@@ -29,25 +29,25 @@ export function AddNewUser({
     setUsers,
     searchInputRef,
 }: AddNewUserProps) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [input, setInput] = useState('');
+    const searchBoxRef = useRef<HTMLDivElement>(null);
+    const [searchValue, setSearchValue] = useState('');
     const [isInputFocused, setIsInputFocused] = useState(false);
-    const insertedOrder = useRef(0);
+    const insertOrder = useRef(0);
 
     const usersToShow = useMemo(
-        () => getUsersToShow(users, input),
-        [input, users]
+        () => getUsersToShow(users, searchValue),
+        [searchValue, users]
     );
 
     useClickAwayListener(() => {
         setIsInputFocused(false);
-    }, containerRef);
+    }, searchBoxRef);
 
     return (
         <div
             role='searchbox'
             aria-label='user search box'
-            ref={containerRef}
+            ref={searchBoxRef}
             className='add-new-user-container'
         >
             <input
@@ -58,7 +58,7 @@ export function AddNewUser({
                 aria-label='search for new user'
                 type='text'
                 onChange={(event) => {
-                    setInput(event.target.value);
+                    setSearchValue(event.target.value);
                 }}
                 onFocus={() => setIsInputFocused(true)}
                 onKeyDown={(event) => {
@@ -87,9 +87,9 @@ export function AddNewUser({
                             searchInputRef={searchInputRef}
                             setUsers={setUsers}
                             user={user}
-                            inputValue={input}
+                            inputValue={searchValue}
                             key={user.email}
-                            insertedOrder={insertedOrder}
+                            insertOrder={insertOrder}
                         />
                     ))}
                 </ul>

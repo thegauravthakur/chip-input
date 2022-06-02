@@ -3,15 +3,9 @@
     width: min-content;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ;
     max-height: 280px;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-y: auto;
     border-radius: 4px;
     margin-top: 5px;
-}
-
-.choose-user-container::-webkit-scrollbar {
-    width: 0;
 }
 
 .add-new-user-container {

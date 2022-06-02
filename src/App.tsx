@@ -20,7 +20,7 @@ function App() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <div>
+        <>
             <h1 className='heading'>Pick Users</h1>
             <main className='user-box'>
                 {usersToShow.map((user) => (
@@ -38,7 +38,7 @@ function App() {
                     users={users}
                 />
             </main>
-        </div>
+        </>
     );
 }
 
