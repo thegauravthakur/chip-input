@@ -4,8 +4,14 @@ import { UserInfo, usersInfo } from './lib/users';
 import { UserChip } from './components/UserChip';
 import './App.css';
 
+function comparator(user1: UserInfo, user2: UserInfo) {
+    if (user1.order < user2.order) return -1;
+    if (user1.order > user2.order) return 1;
+    return 0;
+}
+
 function getUsersToShow(users: UserInfo[]) {
-    return users.filter(({ isSelected }) => isSelected);
+    return users.filter(({ isSelected }) => isSelected).sort(comparator);
 }
 
 function App() {

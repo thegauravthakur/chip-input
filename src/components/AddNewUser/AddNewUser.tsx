@@ -1,6 +1,5 @@
 ﻿import React, {
     Dispatch,
-    MutableRefObject,
     RefObject,
     SetStateAction,
     useMemo,
@@ -33,6 +32,7 @@ export function AddNewUser({
     const containerRef = useRef<HTMLDivElement>(null);
     const [input, setInput] = useState('');
     const [isInputFocused, setIsInputFocused] = useState(false);
+    const insertedOrder = useRef(0);
 
     const usersToShow = useMemo(
         () => getUsersToShow(users, input),
@@ -84,6 +84,7 @@ export function AddNewUser({
                             user={user}
                             inputValue={input}
                             key={user.email}
+                            insertedOrder={insertedOrder}
                         />
                     ))}
                 </ul>

@@ -1,5 +1,5 @@
 ﻿import { UserInfo } from '../../lib/users';
-import { Dispatch, RefObject, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, RefObject, SetStateAction } from 'react';
 import './UserListTile.css';
 
 interface UserListTileProps {
@@ -8,6 +8,7 @@ interface UserListTileProps {
     setUsers: Dispatch<SetStateAction<UserInfo[]>>;
     inputValue: string;
     searchInputRef: RefObject<HTMLInputElement>;
+    insertedOrder: MutableRefObject<number>;
 }
 
 function getModifiedName(name: string, searchTerm: string) {
@@ -30,6 +31,7 @@ export function UserListTile({
     allUsers,
     inputValue,
     searchInputRef,
+    insertedOrder,
 }: UserListTileProps) {
     const modifiedName = getModifiedName(user.name, inputValue);
     function onListTileClick() {
@@ -38,6 +40,8 @@ export function UserListTile({
         const selectedUser = users.find(({ email }) => email === user.email);
         if (selectedUser) {
             selectedUser.isSelected = true;
+            selectedUser.order = insertedOrder.current + 1;
+            insertedOrder.current += 1;
             setUsers(users);
         }
         searchInputRef.current?.focus();
