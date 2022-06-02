@@ -18,7 +18,7 @@ export const usersInfo: UserInfo[] = [
         name: 'Ken Alvarez',
         email: 'ken.alvarez@example.com',
         profileURL: process.env.PUBLIC_URL + '/images/user/user1.jpg',
-        isSelected: true,
+        isSelected: false,
         order: -1,
     },
     {
@@ -32,7 +32,7 @@ export const usersInfo: UserInfo[] = [
         name: 'Tracy Bing',
         email: 'tracky.bing@example.com',
         profileURL: process.env.PUBLIC_URL + '/images/user/user3.jpg',
-        isSelected: true,
+        isSelected: false,
         order: -1,
     },
     {
