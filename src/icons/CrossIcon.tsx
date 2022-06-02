@@ -1,9 +1,15 @@
 ﻿interface CrossIconProps {
     onClick: () => void;
+    ariaLabel: string;
 }
-export function CrossIcon({ onClick }: CrossIconProps) {
+export function CrossIcon({ onClick, ariaLabel }: CrossIconProps) {
     return (
-        <button className='close-icon' type='button' onClick={onClick}>
+        <button
+            aria-label={ariaLabel}
+            className='close-icon'
+            type='button'
+            onClick={onClick}
+        >
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 1024 1024'

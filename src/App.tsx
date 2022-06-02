@@ -14,7 +14,7 @@ function App() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <div className='user-box'>
+        <main className='user-box'>
             {usersToShow.map((user) => (
                 <UserChip
                     setUsers={setUsers}
@@ -29,7 +29,7 @@ function App() {
                 setUsers={setUsers}
                 users={users}
             />
-        </div>
+        </main>
     );
 }
 

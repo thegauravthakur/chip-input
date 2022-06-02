@@ -32,7 +32,6 @@ export function AddNewUser({
     searchInputRef,
 }: AddNewUserProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-
     const [input, setInput] = useState('');
     const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -46,11 +45,16 @@ export function AddNewUser({
     }, containerRef);
 
     return (
-        <div ref={containerRef} className='add-new-user-container'>
+        <div
+            role='searchbox'
+            ref={containerRef}
+            className='add-new-user-container'
+        >
             <input
-                role='searchbox'
+                role='search'
                 ref={searchInputRef}
                 className='add-new-user-input'
+                placeholder='Add new user...'
                 type='text'
                 onChange={(event) => {
                     setInput(event.target.value);

@@ -49,6 +49,7 @@ export function UserListTile({
                 className='list-item-wrapper'
                 type='button'
                 onClick={onListTileClick}
+                aria-label={`select ${user.name}`}
             >
                 <img
                     className='user-profile-picture'

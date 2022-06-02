@@ -29,6 +29,7 @@ export function UserChip({
         <div
             tabIndex={0}
             className='user-chip-wrapper'
+            aria-label={`${user.name} chip`}
             onKeyDown={(event) => {
                 if (event.key === 'Backspace') {
                     onCloseIconClick();
@@ -42,7 +43,10 @@ export function UserChip({
                 alt={`${user.name} profile`}
             />
             <p>{user.name}</p>
-            <CrossIcon onClick={onCloseIconClick} />
+            <CrossIcon
+                ariaLabel={`remove ${user.name} chip`}
+                onClick={onCloseIconClick}
+            />
         </div>
     );
 }
