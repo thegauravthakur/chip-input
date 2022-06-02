@@ -1,0 +1,14 @@
+﻿*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0
+}
+
+button {
+    background-color: white;
+    border: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}

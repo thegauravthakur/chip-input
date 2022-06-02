@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useMemo, useRef, useState } from 'react';
+import { AddNewUser } from './components/AddNewUser';
+import { UserInfo, usersInfo } from './shared/user';
 import './App.css';
+import { UserChip } from './components/UserChip';
+
+function getUsersToShow(users: UserInfo[]) {
+    return users.filter(({ isSelected }) => isSelected);
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [users, setUsers] = useState(usersInfo);
+    const usersToShow = useMemo(() => getUsersToShow(users), [users]);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+
+    return (
+        <div className='user-box'>
+            {usersToShow.map((user) => (
+                <UserChip
+                    setUsers={setUsers}
+                    allUsers={users}
+                    key={user.email}
+                    user={user}
+                    searchInputRef={searchInputRef}
+                />
+            ))}
+            <AddNewUser
+                searchInputRef={searchInputRef}
+                setUsers={setUsers}
+                users={users}
+            />
+        </div>
+    );
 }
 
 export default App;

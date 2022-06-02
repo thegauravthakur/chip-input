@@ -1,0 +1,28 @@
+﻿.user-chip-wrapper {
+    display: grid;
+    grid-template-columns: max-content max-content 20px ;
+    grid-column-gap: 10px;
+    align-items: center;
+    background-color: #bfbfbf;
+    border-radius: 15px;
+    padding-right: 5px;
+}
+
+.user-chip-picture {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.close-icon {
+    padding: 2px;
+    border-radius: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.close-icon:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}

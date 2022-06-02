@@ -1,0 +1,24 @@
+﻿.list-item-wrapper {
+    display: grid;
+    grid-template-columns: max-content 100px max-content;
+    justify-items: start;
+    align-items: center;
+    grid-column-gap: 10px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.list-item-wrapper:hover {
+    background-color: #edebeb;
+    cursor: pointer;
+}
+
+.user-profile-picture {
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+}
+
+.search-match {
+    color: darkgray;
+}
