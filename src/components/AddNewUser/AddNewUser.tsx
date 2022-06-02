@@ -46,6 +46,7 @@ export function AddNewUser({
     return (
         <div
             role='searchbox'
+            aria-label='user search box'
             ref={containerRef}
             className='add-new-user-container'
         >
@@ -54,6 +55,7 @@ export function AddNewUser({
                 ref={searchInputRef}
                 className='add-new-user-input'
                 placeholder='Add new user...'
+                aria-label='search for new user'
                 type='text'
                 onChange={(event) => {
                     setInput(event.target.value);
@@ -75,7 +77,10 @@ export function AddNewUser({
                 }}
             />
             {isInputFocused && (
-                <ul role='listbox' className='choose-user-container'>
+                <ul
+                    aria-label='search results'
+                    className='choose-user-container'
+                >
                     {usersToShow.map((user) => (
                         <UserListTile
                             allUsers={users}

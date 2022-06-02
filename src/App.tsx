@@ -20,22 +20,25 @@ function App() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <main className='user-box'>
-            {usersToShow.map((user) => (
-                <UserChip
-                    setUsers={setUsers}
-                    allUsers={users}
-                    key={user.email}
-                    user={user}
+        <div>
+            <h1 className='heading'>Pick Users</h1>
+            <main className='user-box'>
+                {usersToShow.map((user) => (
+                    <UserChip
+                        setUsers={setUsers}
+                        allUsers={users}
+                        key={user.email}
+                        user={user}
+                        searchInputRef={searchInputRef}
+                    />
+                ))}
+                <AddNewUser
                     searchInputRef={searchInputRef}
+                    setUsers={setUsers}
+                    users={users}
                 />
-            ))}
-            <AddNewUser
-                searchInputRef={searchInputRef}
-                setUsers={setUsers}
-                users={users}
-            />
-        </main>
+            </main>
+        </div>
     );
 }
 

@@ -6,6 +6,7 @@
     grid-column-gap: 10px;
     padding: 10px 20px;
     width: 100%;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .list-item-wrapper:hover {
@@ -20,9 +21,9 @@
 }
 
 .search-match {
-    color: darkgray;
+    color: #737373;
 }
 
 .user-email {
-    color: darkgray;
+    color: #737373;
 }

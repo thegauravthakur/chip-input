@@ -1,5 +1,10 @@
-﻿.user-box {
-    border-bottom: 3px solid deepskyblue;
+﻿.heading {
+    text-align: center;
+    margin: 20px 0 40px 0;
+    color: #2563eb;
+}
+.user-box {
+    border-bottom: 3px solid #2563eb;
     min-height: 45px;
     display: flex;
     flex-wrap: wrap;

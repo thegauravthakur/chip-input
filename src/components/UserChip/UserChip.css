@@ -3,9 +3,13 @@
     grid-template-columns: max-content max-content 20px ;
     grid-column-gap: 10px;
     align-items: center;
-    background-color: lightgray;
+    background-color:#d1d5db;
     border-radius: 15px;
     padding-right: 5px;
+}
+
+.user-chip-wrapper:focus {
+    outline-color: #2563eb;
 }
 
 .user-chip-picture {
@@ -20,9 +24,14 @@
     background-color: transparent;
     display: flex;
     align-items: center;
+    transition: background-color 0.2s ease-in;
+}
+
+.close-icon:focus {
+    outline-color: #2563eb;
 }
 
 .close-icon:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #9ca3af;
     cursor: pointer;
 }
