@@ -7,6 +7,12 @@
 
 export const usersInfo: UserInfo[] = [
     {
+        name: 'Soham Newman',
+        email: 'soham.newman@example.com',
+        profileURL: process.env.PUBLIC_URL + '/images/user/user6.jpg',
+        isSelected: false,
+    },
+    {
         name: 'Ken Alvarez',
         email: 'ken.alvarez@example.com',
         profileURL: process.env.PUBLIC_URL + '/images/user/user1.jpg',
@@ -14,7 +20,7 @@ export const usersInfo: UserInfo[] = [
     },
     {
         name: 'Denise Hall',
-        email: 'dennise.hall@example.com',
+        email: 'deni.hall@abc.com',
         profileURL: process.env.PUBLIC_URL + '/images/user/user2.jpg',
         isSelected: false,
     },
@@ -32,14 +38,8 @@ export const usersInfo: UserInfo[] = [
     },
     {
         name: 'Calvin Jones',
-        email: 'calvin.jones@example.com',
+        email: 'calvin.jones@abc.com',
         profileURL: process.env.PUBLIC_URL + '/images/user/user5.jpg',
-        isSelected: false,
-    },
-    {
-        name: 'Soham Newman',
-        email: 'soham.newman@example.com',
-        profileURL: process.env.PUBLIC_URL + '/images/user/user6.jpg',
         isSelected: false,
     },
     {

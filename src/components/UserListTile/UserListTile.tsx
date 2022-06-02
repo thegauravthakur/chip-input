@@ -1,4 +1,4 @@
-﻿import { UserInfo } from '../../shared/user';
+﻿import { UserInfo } from '../../lib/users';
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import './UserListTile.css';
 

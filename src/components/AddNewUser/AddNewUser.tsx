@@ -9,9 +9,8 @@
 } from 'react';
 import { UserListTile } from '../UserListTile';
 import './AddNewUser.css';
-import { UserInfo } from '../../shared/user';
+import { UserInfo } from '../../lib/users';
 import { useClickAwayListener } from '../../hooks/ClickAwayListener';
-import { log } from 'util';
 
 interface AddNewUserProps {
     users: UserInfo[];

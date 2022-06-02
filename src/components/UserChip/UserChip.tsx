@@ -1,4 +1,4 @@
-﻿import { UserInfo } from '../../shared/user';
+﻿import { UserInfo } from '../../lib/users';
 import { CrossIcon } from '../../icons/CrossIcon';
 import './UserChip.css';
 import { Dispatch, RefObject, SetStateAction } from 'react';

@@ -1,8 +1,8 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { AddNewUser } from './components/AddNewUser';
-import { UserInfo, usersInfo } from './shared/user';
-import './App.css';
+import { UserInfo, usersInfo } from './lib/users';
 import { UserChip } from './components/UserChip';
+import './App.css';
 
 function getUsersToShow(users: UserInfo[]) {
     return users.filter(({ isSelected }) => isSelected);
