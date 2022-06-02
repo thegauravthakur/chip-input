@@ -1,7 +1,8 @@
 ﻿import { UserInfo } from '../../lib/users';
-import { CrossIcon } from '../../icons/CrossIcon';
 import './UserChip.css';
 import { Dispatch, RefObject, SetStateAction } from 'react';
+import { SVGIcon } from '../SVGIcon';
+import { crossIconPath } from '../SVGIcon/pathConstants';
 
 interface UserChipProps {
     user: UserInfo;
@@ -43,10 +44,14 @@ export function UserChip({
                 alt={`${user.name} profile`}
             />
             <p>{user.name}</p>
-            <CrossIcon
-                ariaLabel={`remove ${user.name} chip`}
+            <button
+                aria-label={`remove ${user.name} chip`}
+                className='close-icon'
+                type='button'
                 onClick={onCloseIconClick}
-            />
+            >
+                <SVGIcon path={crossIconPath} />
+            </button>
         </div>
     );
 }
